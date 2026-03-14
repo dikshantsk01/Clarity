@@ -1,176 +1,256 @@
-/* Global reset */
+/* =========================
+   DESIGN SYSTEM
+========================= */
+
+:root{
+    --bg-gradient: linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    --card-bg: rgba(255,255,255,0.08);
+    --border: rgba(255,255,255,0.15);
+    --text: #f1f5f9;
+    --accent: #38bdf8;
+    --danger: #ef4444;
+    --radius: 14px;
+    --blur: blur(12px);
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-/* Body */
 body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg,#667eea,#764ba2);
+    font-family: "Inter",system-ui,sans-serif;
+    background: var(--bg-gradient);
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:flex-start;
-    padding-top:60px;
+    padding-top:80px;
+    color:var(--text);
 }
 
-/* Container */
+/* =========================
+   CONTAINER
+========================= */
+
 .container{
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(10px);
-    padding:25px;
-    width:90%;
-    max-width:380px;
-    border-radius:14px;
-    box-shadow:0 20px 40px rgba(0,0,0,0.15);
-    transition:transform .3s ease;
+    width:360px;
+    padding:28px;
+    border-radius:var(--radius);
+
+    background:var(--card-bg);
+    backdrop-filter:var(--blur);
+
+    border:1px solid var(--border);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+
+    animation: floatCard 6s ease-in-out infinite alternate;
 }
 
-.container:hover{
-    transform:translateY(-4px);
+@keyframes floatCard{
+    from{ transform:translateY(0px); }
+    to{ transform:translateY(-6px); }
 }
 
-/* Heading */
 h1{
     text-align:center;
-    margin-bottom:15px;
-    color:#333;
-    font-weight:700;
-    letter-spacing:0.5px;
+    font-weight:600;
+    letter-spacing:1px;
+    margin-bottom:18px;
 }
 
-/* Input section */
+/* =========================
+   INPUT AREA
+========================= */
+
 .input-section{
     display:flex;
     gap:10px;
-    margin-bottom:12px;
+    margin-bottom:14px;
 }
 
 .input-section input{
     flex:1;
-    padding:10px;
+    padding:11px 12px;
+
     border-radius:8px;
-    border:1px solid #ddd;
-    font-size:14px;
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,0.05);
+    color:white;
+
     outline:none;
+
     transition:all .25s ease;
 }
 
 .input-section input:focus{
-    border-color:#667eea;
-    box-shadow:0 0 0 2px rgba(102,126,234,0.2);
+    border-color:var(--accent);
+    box-shadow:0 0 0 2px rgba(56,189,248,.2);
 }
 
-/* Add button */
+/* ADD BUTTON */
+
 .input-section button{
     padding:10px 14px;
-    border:none;
     border-radius:8px;
-    background:linear-gradient(135deg,#4CAF50,#2ecc71);
-    color:white;
+    border:none;
+
+    background:var(--accent);
+    color:#0f172a;
+
     font-weight:600;
     cursor:pointer;
-    transition:all .25s ease;
+
+    transition:.25s;
 }
 
 .input-section button:hover{
-    transform:translateY(-1px);
-    box-shadow:0 5px 12px rgba(0,0,0,0.2);
+    transform:translateY(-2px) scale(1.05);
+    box-shadow:0 8px 18px rgba(56,189,248,.4);
 }
 
-.input-section button:active{
-    transform:scale(0.95);
-}
+/* =========================
+   TASK COUNT
+========================= */
 
-/* Task count */
 #taskCount{
     font-size:13px;
+    opacity:.8;
     margin-bottom:12px;
-    color:#555;
 }
 
-/* Task list */
+/* =========================
+   TASK LIST
+========================= */
+
 ul{
     list-style:none;
 }
 
 li{
-    background:white;
-    padding:12px;
-    margin-bottom:8px;
-    border-radius:8px;
+    padding:11px 12px;
+    margin-bottom:10px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,0.05);
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    border:1px solid #eee;
+
+    border:1px solid transparent;
+
     transition:all .25s ease;
+
+    animation:taskAppear .35s ease;
+}
+
+@keyframes taskAppear{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 li:hover{
+    border-color:var(--accent);
     transform:translateX(4px);
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
-/* Completed */
+/* completed */
+
 li.completed{
     text-decoration:line-through;
-    opacity:0.6;
+    opacity:.45;
 }
 
-/* Task text */
+/* =========================
+   TASK TEXT
+========================= */
+
 .task-text{
     flex:1;
-    margin-right:10px;
     font-size:14px;
 }
 
-/* Delete button */
+/* =========================
+   DELETE BUTTON
+========================= */
+
 .delete-btn{
-    background:#ff4d4d;
-    color:white;
     border:none;
-    padding:6px 9px;
+    background:var(--danger);
+    color:white;
+
+    padding:6px 8px;
+
     border-radius:6px;
     cursor:pointer;
-    font-size:12px;
-    transition:all .25s ease;
+
+    transition:.25s;
 }
 
 .delete-btn:hover{
-    background:#e63939;
-    transform:scale(1.05);
+    transform:scale(1.1);
+    box-shadow:0 4px 12px rgba(239,68,68,.4);
 }
 
-/* Clear completed */
+/* =========================
+   CLEAR BUTTON
+========================= */
+
 #clearCompleted{
-    margin-top:10px;
     width:100%;
+    margin-top:12px;
+
     padding:10px;
-    border:none;
+
     border-radius:8px;
-    background:linear-gradient(135deg,#ff4d4d,#e63939);
+    border:none;
+
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+
     color:white;
     font-weight:600;
+
     cursor:pointer;
-    transition:all .25s ease;
+
+    transition:.25s;
 }
 
 #clearCompleted:hover{
-    box-shadow:0 6px 14px rgba(0,0,0,0.2);
     transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(239,68,68,.35);
 }
 
 #clearCompleted:disabled{
-    opacity:0.6;
-    cursor:default;
+    opacity:.4;
+    cursor:not-allowed;
 }
 
-/* Responsive */
-@media(max-width:420px){
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:420px){
+
     .container{
-        width:95%;
-        padding:18px;
+        width:92%;
+        padding:22px;
     }
+
 }
