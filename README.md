@@ -34,7 +34,7 @@ This project demonstrates:
 ## ▶️ How to Run Locally
 
 1. Clone the repository
-git clone https://github.com/your-username/todo-app.git
+git clone https://github.com/dikshantsk01/todo-app.git
 
 2. Open `index.html` in your browser
 
