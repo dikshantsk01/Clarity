@@ -517,13 +517,13 @@ body {
 @media (max-width: 520px) {
   body { padding: 20px 10px 60px; align-items: flex-start; }
   .app-shell { border-radius: var(--r-lg); }
-  .app-header   { padding: 22px 20px 0; }
+  .app-header   { padding: 25px 20px 0; }
   .filter-tabs  { padding: 16px 20px 0; }
   .input-wrapper { margin: 16px 20px 0; padding: 4px 4px 4px 14px; }
   .task-list-wrapper { padding: 14px 20px; }
   .app-footer   { padding: 12px 20px 18px; }
   .task-text    { font-size: 14px; }
-  .app-title    { font-size: 22px; }
-  .add-btn      { width: 60px; height: 36px; font-size: 12px; }
+  .app-title    { font-size: 25px; }
+  .add-btn      { width: 60px; height: 36px; font-size: 15px; }
   .task-del     { opacity: 1; transform: scale(1); }   /* always show on touch */
 }
